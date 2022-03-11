@@ -1,3 +1,112 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-Roman.eot');
+        src: local('Neue Haas Grotesk Display Pro 55 Roman'), local('NeueHaasDisplay-Roman'),
+            url('/fonts/NeueHaasDisplay-Roman.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-Roman.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-Roman.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-RomanItalic.eot');
+        src: local('Neue Haas Grotesk Display Pro 56 Roman Italic'), local('NeueHaasDisplay-RomanItalic'),
+            url('/fonts/NeueHaasDisplay-RomanItalic.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-RomanItalic.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-RomanItalic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-Mediu.eot');
+        src: local('Neue Haas Grotesk Display Pro 65 Medium'), local('NeueHaasDisplay-Mediu'),
+            url('/fonts/NeueHaasDisplay-Mediu.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-Mediu.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-Mediu.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-MediumItalic.eot');
+        src: local('Neue Haas Grotesk Display Pro 66 Medium Italic'), local('NeueHaasDisplay-MediumItalic'),
+            url('/fonts/NeueHaasDisplay-MediumItalic.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-MediumItalic.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-MediumItalic.ttf') format('truetype');
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-Bold.eot');
+        src: local('Neue Haas Grotesk Display Pro 75 Bold'), local('NeueHaasDisplay-Bold'),
+            url('/fonts/NeueHaasDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-Bold.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-Bold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro';
+        src: url('NeueHaasDisplay-BoldItalic.eot');
+        src: local('Neue Haas Grotesk Display Pro 76 Bold Italic'), local('NeueHaasDisplay-BoldItalic'),
+            url('/fonts/NeueHaasDisplay-BoldItalic.eot?#iefix') format('embedded-opentype'),
+            url('/fonts/NeueHaasDisplay-BoldItalic.woff') format('woff'),
+            url('/fonts/NeueHaasDisplay-BoldItalic.ttf') format('truetype');
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    button {
+        @apply text-base;
+    }
+}
+
+#zoom button {
+    @apply opacity-60;
+}
+
+#zoom button:hover {
+    @apply opacity-100;
+}
+
+/* referencestrip container */
+#zoom .openseadragon-container > .openseadragon-canvas + div {
+    @apply left-auto right-10 top-[4.5rem] !important;
+}
+
+#zoom .referencestrip {
+    @apply bg-transparent outline-none !important;
+}
+
+#zoom .referencestrip > div {
+    @apply bg-white/80 !important;
+}
+
+#zoom #viewer {
+    @apply absolute inset-0;
+}
+
+#zoom #viewer [data-current-page] {
+    @apply border-2 border-black border-solid !important;
+}
+
+#zoom #toolbar {
+    @apply !absolute m-5 right-0 top-0;
+}
+
+#zoom #toolbar button {
+    @apply align-middle ml-[.75rem] py-1 px-2 text-[1.125rem];
+}

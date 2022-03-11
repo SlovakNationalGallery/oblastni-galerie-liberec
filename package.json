@@ -8,8 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueform/multiselect": "^2.3.3",
+    "@vueform/slider": "^2.0.9",
+    "axios": "^0.26.0",
+    "lodash": "^4.17.21",
+    "openseadragon": "^3.0.0",
+    "qs": "^6.10.3",
+    "swiper": "^8.0.7",
+    "vite-plugin-rewrite-all": "^0.1.2",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.9",
+    "vue-masonry": "^0.14.1",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
