@@ -13,7 +13,7 @@ jobs:
       - run: npm install
       - run: npm run build
         env:
-          VITE_API_URL: https://www.webumenia.sk/api/v1
+          VITE_API_URL: https://test.webumenia.sk/api/v1
           VITE_IMAGE_HOST: https://www.webumenia.sk
           VITE_ZOOM_HOST: https://img.webumenia.sk
       - uses: easingthemes/ssh-deploy@main
