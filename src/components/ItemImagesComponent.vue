@@ -1,6 +1,5 @@
 <template>
     <div class="relative" v-if="item.content.images.length">
-        <span class="absolute bg-black/60 h-10 leading-10 rounded-full right-2 text-center text-white w-10 top-2"><i class="fa fa-search-plus" /></span>
         <Swiper
         @imagesReady="swiperTo(0)"
         @swiper="setSwiper"
@@ -12,6 +11,8 @@
                 </router-link>
             </SwiperSlide>
         </Swiper>
+
+        <span class="absolute bg-black/60 h-10 leading-10 rounded-full right-2 text-center text-white w-10 top-2 z-10"><i class="fa fa-search-plus" /></span>
 
         <template v-if="item.content.images.length > 1">
             <div class="absolute bg-white/80 cursor-pointer h-10 leading-10 left-2 rounded-full text-center top-1/2 -translate-y-1/2 w-10 z-10" @click="swiperPrev"><i class="fa fa-arrow-left"></i></div>
