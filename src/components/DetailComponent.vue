@@ -11,10 +11,6 @@
 
         <div class="flex flex-wrap -mx-4 mt-6 lg:mt-12">
             <div class="px-4 lg:w-2/3">
-                <!-- <router-link class="block relative" :to="{ name: 'zoom', id: item.id, query: { page: currentImage } }">
-                    <img :src="$imagePreviewUrl(item, 800)" :alt="item.content.title" class="mx-auto">
-                </router-link> -->
-
                 <ItemImagesComponent v-bind="{ item }" @select="selected => { currentImage = selected }" />
             </div>
 
