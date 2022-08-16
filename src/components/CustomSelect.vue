@@ -28,7 +28,6 @@ export default {
         },
         findInputValue() {
             for (const [inputValue, option] of Object.entries(this.options)) {
-                console.log(option, this.modelValue)
                 if (_.isEqual(option, this.modelValue)) {
                     return inputValue
                 }
