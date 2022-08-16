@@ -33,7 +33,7 @@
             <slot name="sort">
                 <CustomSelect
                     v-model="$route.query.sort"
-                    @update:modelValue="update"
+                    @update:modelValue="sortUpdate"
                     :label="option => $t(`item.sort.${option}`)"
                     :options="sortOptions"
                     />
@@ -112,9 +112,9 @@ export default {
             debouncedRedraw: _.debounce(() => { this.$redrawVueMasonry(this.masonry) }, 100),
             sortOptions: {
                 [null]: {},
-                most_viewed: {'view_count': 'asc'},
-                oldest: {'date_earliest': 'asc'},
-                newest: {'date_latest': 'desc'},
+                'most_viewed': {'view_count': 'asc'},
+                'oldest': {'date_earliest': 'asc'},
+                'newest': {'date_latest': 'desc'},
             },
         }
     },
@@ -129,6 +129,9 @@ export default {
         facetUpdate(value, key) {
             const query = _.merge(this.$route.query, { filter: { [key]: value } })
             this.$router.replace({ query, force: true })
+        },
+        sortUpdate() {
+            this.$router.replace({ query: this.$route.query, force: true })
         },
         yearsUpdate(value) {
             const query = _.merge(this.$route.query, {
