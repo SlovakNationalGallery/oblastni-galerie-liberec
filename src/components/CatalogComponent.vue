@@ -23,17 +23,24 @@
     </slot>
 
     <slot name="list-controls">
-        <div class="flex justify-between px-6 lg:px-16">
+        <div v-if="loading">
+            <img class="mx-auto" src="/images/loader.svg">
+        </div>
+        <div v-else-if="total" class="flex justify-between px-6 lg:px-16 py-6 lg:py-8">
             <slot name="total">
-                <div class="my-6 lg:my-8 text-lg" v-if="total">{{ $tc('items_count', total) }}</div>
-                <div class="my-6 lg:my-8 text-center text-lg w-full" v-else-if="!loading">{{ $t('no_results') }}</div>
-                <div class="my-6 lg:my-8" v-else><img class="mx-auto" src="/images/loader.svg"></div>
+                <div class="text-lg">{{ $tc('items_count', total) }}</div>
             </slot>
-            <!-- <slot name="sort">
-                <select class="text-base" v-model="sort">
-                    <option v-for="key in sortOptions" :key="key">{{ $t(`item.sort.${key}`) }}</option>
-                </select>
-            </slot> -->
+            <slot name="sort">
+                <CustomSelect
+                    v-model="$route.query.sort"
+                    @update:modelValue="update"
+                    :label="option => $t(`item.sort.${option}`)"
+                    :options="sortOptions"
+                    />
+            </slot>
+        </div>
+        <div v-else>
+            <div class="text-center text-lg w-full">{{ $t('no_results') }}</div>
         </div>
     </slot>
 
@@ -66,6 +73,7 @@
 <style src="@vueform/slider/themes/default.css"></style>
 
 <script>
+import CustomSelect from './CustomSelect.vue'
 import FacetComponent from './FacetComponent.vue'
 import Slider from '@vueform/slider'
 import mixin from '../mixin.js'
@@ -75,6 +83,7 @@ import qs from 'qs'
 
 export default {
     components: {
+        CustomSelect,
         FacetComponent,
         Slider
     },
@@ -101,7 +110,12 @@ export default {
             page: 1,
             observer: new IntersectionObserver(this.observerCallback),
             debouncedRedraw: _.debounce(() => { this.$redrawVueMasonry(this.masonry) }, 100),
-            sortOptions: [ null, 'view_count' ],
+            sortOptions: {
+                [null]: {},
+                most_viewed: {'view_count': 'asc'},
+                oldest: {'date_earliest': 'asc'},
+                newest: {'date_latest': 'desc'},
+            },
         }
     },
     created() {
@@ -200,6 +214,7 @@ export default {
         update() {
             this.loadMoreClicked = false
             this.loading = true
+            this.isLastPage = null
             this.page = 1
             this.items = []
             this.observer.disconnect()

@@ -67,12 +67,9 @@ const messages = {
             },
             sort: {
                 [null]: 'poslední změny',
-                created_at: 'data přidání',
-                title: 'názvu',
-                author: 'autora',
+                most_viewed: 'počtu vidění',
                 newest: 'datování – od nejnovějšího',
-                newest: 'datování – od nejstaršího',
-                view_count: 'počtu vidění',
+                oldest: 'datování – od nejstaršího',
             }
         },
         items_count: '1 dílo | {count} díla | {count} díl',
